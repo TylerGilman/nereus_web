@@ -1,0 +1,12 @@
+package home
+
+import (
+  "nereus_web/views/layouts"
+)
+
+templ Index() {
+  @layouts.Base() {
+    
+<div id="tabs" hx-get="/about" hx-trigger="load delay:100ms" hx-target="#tabs" hx-swap="innerHTML" style="color=white;"/>
+  }
+}

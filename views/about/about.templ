@@ -6,15 +6,10 @@ templ About(){
             position: relative;
             max-width: 20%; 
         }
-
         .overlay-image {
             display: block;
             width: 100%;
         }
-        .selected {
-          background-color: gray;
-        }
-
         .overlay {
           position: absolute;
           bottom: 0;
@@ -48,19 +43,70 @@ templ About(){
             <div class="overlay">
                 <div class="overlay-text">
                   <div class="tab-list" role="tablist">
-	<button hx-get="/about" class="selected" role="tab" aria-selected="true" aria-controls="tab-content">About</button>
+	<button hx-get="/about" class="bg-zinc-600 rounded-md" role="tab" aria-selected="true" aria-controls="tab-content">About</button>
   <hr/>
-	<button hx-get="/blog" role="tab" aria-selected="false" aria-controls="tab-content">Blog</button>
+	<button hx-get="/contact" class="hover:bg-zinc-600 rounded-md" role="tab" aria-selected="false" aria-controls="tab-content">Contact</button>
   <hr/>
-	<button hx-get="/contact" role="tab" aria-selected="false" aria-controls="tab-content">Contact</button>
+	<button hx-get="/blog" class="hover:bg-zinc-600 rounded-md" role="tab" aria-selected="false" aria-controls="tab-content">Blog</button>
 
 </div>
                   </div>
                 </div>
         </div>
     </div>
-<div id="tab-content" role="tabpanel" class="tab-content flex items-center justify-center text-white">
-Nereus, in Greek religion, sea god called by Homer “Old Man of the Sea,” noted for his wisdom, gift of prophecy, and ability to change his shape. He was the son of Pontus, a personification of the sea, and Gaea, the Earth goddess. The Nereids (water nymphs) were his daughters by the Oceanid Doris, and he lived with them in the depths of the sea, particularly the Aegean. Aphrodite, the goddess of love, was his pupil. The Greek hero Heracles, in his quest for the golden apples of the Hesperides, obtained directions from Nereus by wrestling with him in his many forms. Nereus frequently appears in vase paintings as a dignified spectator.
+<div id="tab-content" role="tabpanel" class="tab-content items-center justify-center text-white m-10">
+  <div class="m-10">
+<h1 x-data="{
+    startingAnimation: { opacity: 0, scale: 4 },
+    endingAnimation: { opacity: 1, scale: 1, stagger: 0.07, duration: 1, ease: 'expo.out' },
+    addCNDScript: true,
+    animateText() {
+        $el.classList.remove('invisible');
+        gsap.fromTo($el.children, this.startingAnimation, this.endingAnimation);
+    },
+    splitCharactersIntoSpans(element) {
+        text = element.innerHTML;
+        modifiedHTML = [];
+        for (var i = 0; i < text.length; i++) {
+            attributes = '';
+            if(text[i].trim()){ attributes = 'class=\'inline-block\''; }
+            modifiedHTML.push('<span ' + attributes + '>' + text[i] + '</span>');
+        }
+        element.innerHTML = modifiedHTML.join('');
+    },
+    addScriptToHead(url) {
+        script = document.createElement('script');
+        script.src = url;
+        document.head.appendChild(script);
+    }
+}"
+x-init="
+    splitCharactersIntoSpans($el);
+    if(addCNDScript){
+        addScriptToHead('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js');
+    }
+    gsapInterval = setInterval(function(){
+        if(typeof gsap !== 'undefined'){
+            animateText();
+            clearInterval(gsapInterval);
+        }
+    }, 5);
+"
+class="invisible block text-3xl font-bold custom-font"
+>
+  In Greek mythology, Nereus, known as the “Old Man of the Sea” is a sea god celebrated for his profound wisdom and his remarkable ability to shape-shift.
+</h1>
+  </div>
+  <hr/>
+  <h2 class="bold m-20">
+ Nereus Technology is dedicated to guiding companies and individuals through the complexities of modern technology and creating highly adaptive tech solutions.</h2>
+
+ <h3 class="m-10">
+ We take inspiration from Nereus’s legendary adaptability and insight, committing to deliver simple, cost-effective software solutions that are as dynamic as they are reliable. Utilizing industry best practices, we ensure that our services are tailored to meet the specific needs of our clients, helping them to achieve technological success with the wisdom and foresight of our mythological namesake. 
+ <href hx-get="/contact" class="hover:text-green-500 hover:text-bold"> Contact Us </href>
+ at Nereus Technology for a FREE consultation.  
+
+ </h3>
 </div>
 }
 

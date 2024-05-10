@@ -3,15 +3,33 @@ package components
 templ Navigation() {
   <div class="border-b border-white py-2">
     <div class="container mx-auto">
-      <div class="flex justify-between">
-        <div class="text-white">NEREUS Technologies</div> 
+      <div class="flex justify-between text-white">
+          NEREUS TECHNOLOGY
         <div class="flex space-x-12">
           <div class="space-x-5 flex text-blue-500">
           </div>
           <div>
-            <button type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium tracking-wide text-black transition-colors duration-200 rounded-md bg-neutral-950 bg-white hover:bg-blue-200 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none">
-    Contact
-</button>
+            <div x-data="{ switchOn: false }" class="flex items-center justify-center space-x-2">
+    <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn"/>
+
+    <button 
+        x-ref="switchButton"
+        type="button" 
+        @click="switchOn = ! switchOn"
+        :class="switchOn ? 'bg-zinc-600' : 'bg-neutral-200'" 
+        class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10"
+        x-cloak>
+
+        <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'" class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
+    </button>
+
+    <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')" 
+        :class="{ 'text-zinc-600': switchOn, 'text-gray-400' : ! switchOn }"
+        class="text-sm select-none"
+        x-cloak>
+        Toggle Darkmode
+    </label>
+            </div>
           </div>
         </div>
       </div>

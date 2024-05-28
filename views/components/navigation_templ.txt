@@ -1,6 +1,6 @@
-<div class=\"flex text-white justify-between\"><div class=\"flex max-w-xl items-left mx-10 py-2 bg-black\"><div x-data=\"{ \n        activeAccordion: &#39;&#39;, \n        setActiveAccordion(id) { \n            this.activeAccordion = (this.activeAccordion == id) ? &#39;&#39; : id \n        } \n    }\" class=\"relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0\"><div
+<div class=\"justify-between\"><div class=\"flex max-w-xl items-left mx-10 py-2 bg-black\"><div x-data=\"{ \n        activeAccordion: &#39;&#39;, \n        setActiveAccordion(id) { \n            this.activeAccordion = (this.activeAccordion == id) ? &#39;&#39; : id \n        } \n    }\" class=\"relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0\"><div
  class=\"invisible size-0\"
-><div x-data=\"{ id: $id(&#39;accordion&#39;) }\"
+><img src=\"public/images/nereus_logo.png\" class=\"max-w-40 my-10 border-2 rounded-full\"><div x-data=\"{ id: $id(&#39;accordion&#39;) }\"
  class=\"cursor-pointer group bg-purple-800 w-full rounded-md border-2\"
  class=\"cursor-pointer group rounded-md border-2\" hx-get=\"/about\"
 ><button
@@ -15,10 +15,10 @@
  class=\"cursor-pointer rounded-md group border-2 \" hx-get=\"/blog\"
 ><button
  @mouseover=\"setActiveAccordion(id)\" @mouseout=\"setActiveAccordion(id)\"
- class=\"flex items-center justify-between w-full p-4 text-left select-none group-hover:underline\"><span>Blog</span> <svg class=\"w-4 h-4 duration-200 ease-out\" :class=\"{ &#39;rotate-180&#39;: activeAccordion==id }\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg></button><div x-show=\"activeAccordion==id\" x-collapse x-cloak><div class=\"p-4 pt-0 opacity-70\">Learn about our projects...</div></div></div></div><div
- class=\"flex items-center text-white py-2 m-auto border-0\" hx-get=\"/min\"
- class=\"bg-purple-800 items-center text-white py-2 m-auto rounded border-2\" hx-get=\"/max\"
+ class=\"flex items-center justify-between w-full p-4 text-left select-none group-hover:underline\"><span>Blog</span> <svg class=\"w-4 h-4 duration-200 ease-out\" :class=\"{ &#39;rotate-180&#39;: activeAccordion==id }\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg></button><div x-show=\"activeAccordion==id\" x-collapse x-cloak><div class=\"p-4 pt-0 opacity-70\">Learn about our projects...</div></div></div><div class=\"border-2\"><div x-data=\"{ switchOn: false }\" class=\"flex items-center my-5  mx-2\"><input id=\"thisId\" type=\"checkbox\" name=\"switch\" class=\"hidden\" :checked=\"switchOn\"> <button x-ref=\"switchButton\" type=\"button\" @click=\"switchOn = ! switchOn\" :class=\"switchOn ? &#39;bg-zinc-600&#39; : &#39;bg-neutral-200&#39;\" class=\"relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10\" x-cloak><span :class=\"switchOn ? &#39;translate-x-[18px]&#39; : &#39;translate-x-0.5&#39;\" class=\"w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md\"></span></button> <label @click=\"$refs.switchButton.click(); $refs.switchButton.focus()\" :id=\"$id(&#39;switch&#39;)\" :class=\"{ &#39;text-zinc-600&#39;: switchOn, &#39;text-gray-400&#39; : ! switchOn }\" class=\"text-sm select-none mx-2\" x-cloak>Toggle Lightmode</label></div></div></div><div
+ class=\"flex items-center text-white py-2 m-auto border-2\" hx-get=\"/min\"
+ class=\"bg-purple-800 items-center text-white py-2  m-auto rounded border-2\" hx-get=\"/max\"
 >
 <svg class=\"w-4 h-4 duration-200 ease-out mx-8\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg>
 <svg class=\"w-4 h-4 duration-200 ease-out mx-auto\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\" transform=\"rotate(180, 12, 12)\"></polyline></svg>
-</div></div></div><div class=\"justify-between\"><img src=\"public/images/nereus_logo.png\" class=\"max-w-40 my-10 mr-40 border-2 rounded-full\"></div></div>
+</div></div></div></div>

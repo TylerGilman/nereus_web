@@ -7,5 +7,5 @@ import (
 )
 
 func HandleHome(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, home.Index())
+	return Render(w, r, home.Index("blog", "dark", true))
 }

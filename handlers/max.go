@@ -7,5 +7,5 @@ import (
 )
 
 func HandleMax(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, about.About(false))
+	return Render(w, r, about.About())
 }

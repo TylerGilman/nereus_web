@@ -2,30 +2,18 @@ package blog
 
 import "nereus_web/views/components"
 
-type Nav struct {
-about string
-blog string
-contact string
-}
-
-templ Blog(minimize bool) {
-<div class="grid grid-cols-5 gap-3">
-  @components.Navigation(minimize, 2)
-  <div class="flex center items-center bg-black col-span-4">
-    <div id="tab-content" role="tabpanel" class="tab-content items-center justify-center text-white m-10">
-      <div class="m-10">
-        <h1 class="m-10 text-align justify-center">BLOG </h1>
-        <hr />
-        <h2>Blog Title </h2>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque.
-        Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis
-        malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta.
-        Donec
-        scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut
-        auctor
-        dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.
-      </div>
-    </div>
-  </div>
+templ Blog() {
+<div id="navigation" hx-swap-oob="true">
+  @components.Navigation(false, 2)
+</div>
+<div id="page-content" hx-swap-oob="true" role="tabpanel"
+  class="tab-content items-center justify-center text-white m-10 col-span-4">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque.
+  Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis
+  malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta.
+  Donec
+  scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut
+  auctor
+  dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.
 </div>
 }

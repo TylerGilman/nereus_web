@@ -7,5 +7,5 @@ import (
 )
 
 func HandleMin(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, about.About(true))
+	return Render(w, r, about.About())
 }

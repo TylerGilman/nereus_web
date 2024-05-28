@@ -1,0 +1,18 @@
+package Layouts
+
+type NavData struct {
+Page string
+Lightmode string
+Minimized bool
+}
+
+func NewNavData(page string, lightmode string, minimized bool) NavData {
+return NavData{
+Page: page,
+Lightmode: lightmode,
+Minimized: minimized,
+}
+}
+
+templ Page(data NavData) {
+}

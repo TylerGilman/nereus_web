@@ -7,5 +7,5 @@ import (
 )
 
 func HandleContactIndex(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, contact.Contact(false))
+	return Render(w, r, contact.Contact())
 }

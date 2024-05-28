@@ -7,5 +7,5 @@ import (
 )
 
 func HandleBlogIndex(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, blog.Blog(false))
+	return Render(w, r, blog.Blog())
 }

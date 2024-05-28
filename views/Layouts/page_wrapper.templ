@@ -1,0 +1,21 @@
+package Layouts
+
+import (
+"nereus_web/views/components"
+)
+
+templ PageWrapper() {
+
+<body class="antialiased bg-black">
+  <div class="grid grid-cols-5 gap-3">
+    <div id="navigation">
+      @components.Navigation(false, 0)
+    </div>
+    <div id="page" class="col-span-4">
+      <div id="page-content">
+        { children... }
+      </div>
+    </div>
+  </div>
+</body>
+}

@@ -1,58 +1,27 @@
 package blog
 
-templ Blog(){
+import "nereus_web/views/components"
 
+type Nav struct {
+about string
+blog string
+contact string
+}
 
-    <div class="flex center items-center w-1/3 bg-black">
-    <div x-data="{ 
-        activeAccordion: '', 
-        setActiveAccordion(id) { 
-            this.activeAccordion = (this.activeAccordion == id) ? '' : id 
-        } 
-    }" class="relative w-full mx-auto justify-center items-center overflow-hidden text-sm font-normal bg-black border text-white border-gray-200 divide-y divide-gray-200 rounded-md">
-    <div x-data="{ id: $id('accordion') }" class="cursor-pointer group" hx-get="/about">
-        <button @mouseover="setActiveAccordion(id)" @mouseleave="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
-            <span>About</span>
-            <svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
-            <div class="p-4 pt-0 opacity-70">
-               What is Nereus Technology?
-               </div>
-        </div>
+templ Blog(minimize bool) {
+@components.Navigation(minimize, 2)
+<div class="flex center items-center w-1/3 bg-black">
+  <div id="tab-content" role="tabpanel" class="tab-content items-center justify-center text-white m-10">
+    <div class="m-10">
+      <h1 class="m-10 text-align justify-center">BLOG </h1>
+      <hr />
+      <h2>Blog Title </h2>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque.
+      Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis
+      malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta. Donec
+      scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut auctor
+      dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.
     </div>
-    <div x-data="{ id: $id('accordion') }" class="cursor-pointer group" hx-get="/contact">
-        <button @mouseover="setActiveAccordion(id)" @mouseleave="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
-            <span>Contact</span>
-            <svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
-            <div class="p-4 pt-0 opacity-70">
-                Register for a FREE consultation!
-            </div>
-        </div>
-    </div>
-    <div x-data="{ id: $id('accordion') }" class="cursor-pointer group bg-purple-800">
-        <button @mouseover="setActiveAccordion(id)" @mouseleave="setActiveAccordion(id) "class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
-            <span>Blog</span>
-            <svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
-            <div class="p-4 pt-0 opacity-70">
-                Learn about our projects...Weimg-container object-scale-down-1/2
-            </div>
-          </div>
-        </div>
-    </div>
-</div>
-<div id="tab-content" role="tabpanel" class="tab-content items-center justify-center text-white m-10">
-  <div class="m-10">
-    <h1 class="m-10 text-align justify-center"> BLOG </h1>
-    <hr/>
-    <h2> Blog Title </h2>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque. Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta. Donec scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut auctor dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.
   </div>
 </div>
 }
-
-

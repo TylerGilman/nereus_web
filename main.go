@@ -20,6 +20,8 @@ func main() {
 
 	router.Handle("/*", public())
 	router.Get("/", handlers.Make(handlers.HandleHome))
+	router.Get("/min", handlers.Make(handlers.HandleMin))
+	router.Get("/max", handlers.Make(handlers.HandleMax))
 	router.Get("/about", handlers.Make(handlers.HandleAboutIndex))
 	router.Get("/blog", handlers.Make(handlers.HandleBlogIndex))
 	router.Get("/contact", handlers.Make(handlers.HandleContactIndex))

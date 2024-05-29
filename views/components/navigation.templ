@@ -1,9 +1,9 @@
 package components
 
 templ NavButton(name string, desc string, on bool) {
-<div x-data="{ id: $id('accordion') }" if on==true {
-  class="cursor-pointer group bg-purple-800 w-full rounded-md border-2" } if on==false {
-  class="cursor-pointer group rounded-md border-2" hx-swap="outerHTML" hx-get={ "/" + name } }>
+<div hx-push-url="true" x-data="{ id: $id('accordion') }" if on==true {
+  class="cursor-pointer group bg-purple-800 w-full rounded-md mx-auto border-2 min-content" } if on==false {
+  class="cursor-pointer m-auto group rounded-md border-2 min-content" hx-swap="outerHTML" hx-get={ "/" + name } }>
   <button if on!=true { @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" }
     class="flex items-center justify-between w-full p-4  text-left select-none group-hover:underline">
     <span>{ name }</span>
@@ -22,7 +22,7 @@ templ NavButton(name string, desc string, on bool) {
 }
 
 templ Navigation(minimize bool, on int) {
-<div class="flex max-w-xl items-left mx-10 py-2 bg-black">
+<div class="flex min-content max-w-xl items-left py-2 bg-black">
   <div x-data="{ 
         activeAccordion: '', 
         setActiveAccordion(id) { 
@@ -30,7 +30,7 @@ templ Navigation(minimize bool, on int) {
         } 
     }" class="relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0">
     <div if minimize { class="invisible size-0" }>
-      <img src="public/images/nereus_logo.png" class="max-w-40 my-10 border-2 rounded-full" />
+      <img src="public/images/nereus_logo.png" class="my-10 min-w-20 border-2 rounded-full" />
       if on==0 {
       @NavButton("About", "Learn about Nereus", true)
       } else {
@@ -46,36 +46,23 @@ templ Navigation(minimize bool, on int) {
       } else {
       @NavButton("Blog", "Learn more about our projects", false)
       }
-      <div class="border-2">
-        <div x-data="{ switchOn: false }" class="flex items-center my-5  mx-2">
-          <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn" />
-          <button x-ref="switchButton" type="button" @click="switchOn = ! switchOn"
-            :class="switchOn ? 'bg-zinc-600' : 'bg-neutral-200'"
-            class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10" x-cloak>
-            <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"
-              class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
-          </button>
-          <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')"
-            :class="{ 'text-zinc-600': switchOn, 'text-gray-400' : ! switchOn }" class="text-sm select-none mx-2"
-            x-cloak>
-            Toggle Lightmode
-          </label>
+      <div class="border-2 mx-auto">
+        <div if !minimize { class="flex items-center text-white py-2 m-auto border-2" hx-post="/min"
+          hx-disabled-elt="#navigation" } if minimize {
+          class="bg-purple-800 items-center text-white py-2  m-auto rounded border-2" hx-post="/max" }>
+          if minimize {
+          <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
+          </svg>
+          } else {
+          <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9" transform="rotate(90, 12, 12)"></polyline>
+          </svg>
+          }
         </div>
       </div>
-    </div>
-    <div if !minimize { class="flex items-center text-white py-2 m-auto border-2" hx-get="/min" } if minimize {
-      class="bg-purple-800 items-center text-white py-2  m-auto rounded border-2" hx-get="/max" }>
-      if minimize {
-      <svg class="w-4 h-4 duration-200 ease-out mx-8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-      } else {
-      <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9" transform="rotate(180, 12, 12)"></polyline>
-      </svg>
-      }
     </div>
   </div>
 </div>

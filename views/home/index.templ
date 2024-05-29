@@ -8,9 +8,7 @@ import (
 templ Index(page string, mode string, minimized bool) {
 @Layouts.Base() {
 @components.Header()
-@Layouts.PageWrapper() {
-@Layouts.Page(Layouts.NewNavData(page, mode, minimized))
-}
+@Layouts.PageWrapper()
 @components.Footer()
 }
 }

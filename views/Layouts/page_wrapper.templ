@@ -1,19 +1,15 @@
 package Layouts
 
-import (
-"nereus_web/views/components"
-)
+import ()
 
 templ PageWrapper() {
 
 <body class="antialiased bg-black">
   <div class="grid grid-cols-5 gap-3">
-    <div id="navigation">
-      @components.Navigation(false, 0)
-    </div>
+    <div id="navigation"></div>
     <div id="page" class="col-span-4">
       <div id="page-content">
-        { children... }
+        <div hx-trigger="load" hx-swap="outerHTML" hx-get="/About" hx-vals='{"page": "fuck"}'></div>
       </div>
     </div>
   </div>

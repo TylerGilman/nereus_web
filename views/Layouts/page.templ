@@ -14,5 +14,15 @@ Minimized: minimized,
 }
 }
 
+templ LoadPage(data NavData) {
+{ data.Lightmode }
+}
+
 templ Page(data NavData) {
+if data.Page == "about" {
+<div hx-trigger="load" hx-swap="outerHTML" hx-get="/About" hx-vals='{"page": "fuck"}'></div>
+}
+if data.Page == "contact" {
+<div hx-trigger="load" hx-swap="outerHTML" hx-get="/Contact" hx-vals='{"page": "fuck"}'></div>
+}
 }

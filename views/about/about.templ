@@ -1,6 +1,6 @@
 package about
 
-import "nereus_web/views/components"
+import ()
 
 type Nav struct {
 about string
@@ -9,18 +9,15 @@ contact string
 }
 
 templ About() {
-<div id="navigation" hx-swap-oob="true">
-  @components.Navigation(false, 0)
-</div>
 <div id="page-content" hx-swap-oob="true" role="tabpanel"
-  class="tab-content items-center justify-center text-white m-10 col-span-4">
+  class="items-center justify-center text-white m-10 col-span-4">
   <h2 class="bold m-20 text-center text-4xl font-bold">
     Nereus Technology is dedicated to guiding companies and individuals through the complexities of modern technology
     and creating highly adaptive tech solutions.
   </h2>
   <h3 class="m-10 text-2xl font-bold">
     We take inspiration from Nereus’s legendary adaptability and insight, committing to deliver simple, cost-effective
-    software solutions that are as dynamic as they are reliable. Utilizing industry best practices, we ensure that our
+    software solutions that are as dynamic as they are reliable. Utilizing industry best practices, we ensure that /ur
     services are tailored to meet the specific needs of our clients, helping them to achieve technological success
     with
     the wisdom and foresight of our mythological namesake.

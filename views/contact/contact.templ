@@ -1,12 +1,7 @@
 package contact
 
-import "nereus_web/views/components"
-
 templ Contact() {
-<div id="navigation" hx-swap-oob="true">
-  @components.Navigation(false, 1)
-</div>
-<div id="page-content" hx-swap-oob="true" role="tabpanel"
+<div id="page-content" hx-swap-oob="true" hx-target="page-content" role="tabpanel"
   class="tab-content items-center justify-center text-black m-11 col-span-4 bg-white rounded-md">
   <h1 class="m-2 context-align justify-center">Contact Us </h1>
   <div class="w-full max-w-xs m-10">

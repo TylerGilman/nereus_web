@@ -1,0 +1,21 @@
+<div x-data=\"{ id: $id(&#39;accordion&#39;) }\"
+ class=\"cursor-pointer group bg-purple-800 w-full rounded-md mx-auto border-2 min-content\"
+ class=\"cursor-pointer m-auto group rounded-md border-2 min-content\" hx-swap=\"outerHTML\" hx-get=\"/\" hx-include=\"#tab\" hx-vals=\"
+\" hx-headers=\"
+\"
+><button
+ @mouseover=\"setActiveAccordion(id)\" @mouseout=\"setActiveAccordion(id)\"
+ class=\"flex items-center justify-between w-full p-4  text-left select-none group-hover:underline\"><span>
+</span> <svg class=\"w-4 h-4 duration-200 ease-out\" :class=\"{ &#39;rotate-180&#39;: activeAccordion==id }\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg></button><div x-show=\"activeAccordion==id\" x-invisible x-cloak><div class=\"p-4 pt-0 opacity-70\">
+</div></div></div>
+<div class=\"flex min-content max-w-xl items-left py-2 bg-black\"><input id=\"tab\" type=\"hidden\" name=\"tab\" value=\"
+\"><div x-data=\"{ \n        activeAccordion: &#39;&#39;, \n        setActiveAccordion(id) { \n            this.activeAccordion = (this.activeAccordion == id) ? &#39;&#39; : id \n        } \n    }\" class=\"relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0\"><div
+ class=\"invisible size-0\"
+><img src=\"public/images/nereus_logo.png\" class=\"my-10 min-w-20 border-2 rounded-full\"> 
+<div class=\"border-2 mx-auto\"><div
+ class=\"flex items-center text-white py-2 m-auto border-2\" hx-post=\"/min\" hx-disabled-elt=\"#navigation\"
+ class=\"bg-purple-800 items-center text-white py-2  m-auto rounded border-2\" hx-post=\"/max\"
+>
+<svg class=\"w-4 h-4 duration-200 ease-out mx-auto\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\" transform=\"rotate(220, 12, 12)\"></polyline></svg>
+<svg class=\"w-4 h-4 duration-200 ease-out mx-auto\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\" transform=\"rotate(90, 12, 12)\"></polyline></svg>
+</div></div></div></div></div>

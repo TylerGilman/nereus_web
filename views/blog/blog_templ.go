@@ -10,8 +10,6 @@ import "context"
 import "io"
 import "bytes"
 
-import "nereus_web/views/components"
-
 func Blog() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
@@ -25,15 +23,7 @@ func Blog() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"navigation\" hx-swap-oob=\"true\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = components.Navigation(false, 2).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div id=\"page-content\" hx-swap-oob=\"true\" role=\"tabpanel\" class=\"tab-content items-center justify-center text-white m-10 col-span-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque. Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta. Donec scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut auctor dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.</div>")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

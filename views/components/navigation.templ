@@ -1,9 +1,12 @@
 package components
 
+import "fmt"
+
 templ NavButton(name string, desc string, on bool) {
-<div hx-push-url="true" x-data="{ id: $id('accordion') }" if on==true {
+<div x-data="{ id: $id('accordion') }" if on==true {
   class="cursor-pointer group bg-purple-800 w-full rounded-md mx-auto border-2 min-content" } if on==false {
-  class="cursor-pointer m-auto group rounded-md border-2 min-content" hx-swap="outerHTML" hx-get={ "/" + name } }>
+  class="cursor-pointer m-auto group rounded-md border-2 min-content" hx-swap="outerHTML" hx-get="/" hx-include="#tab"
+  hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content" }` } }>
   <button if on!=true { @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" }
     class="flex items-center justify-between w-full p-4  text-left select-none group-hover:underline">
     <span>{ name }</span>
@@ -23,6 +26,7 @@ templ NavButton(name string, desc string, on bool) {
 
 templ Navigation(minimize bool, on int) {
 <div class="flex min-content max-w-xl items-left py-2 bg-black">
+  <input id="tab" type="hidden" name="tab" value={ ctx.Value("tab").(string) } />
   <div x-data="{ 
         activeAccordion: '', 
         setActiveAccordion(id) { 

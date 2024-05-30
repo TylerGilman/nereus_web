@@ -2,18 +2,45 @@ package Layouts
 
 import (
 "nereus_web/views/about"
+"nereus_web/views/contact"
+"nereus_web/views/blog"
 "nereus_web/views/components"
 )
+
+templ PickTab(tab string) {
+if tab == "About" {
+@about.About()
+}
+if tab == "Blog" {
+@blog.Blog()
+}
+if tab == "Contact" {
+@contact.Contact()
+}
+}
+
+func PickNum(tab string) int {
+if tab == "About" {
+return 0
+}
+if tab == "Contact" {
+return 1
+}
+if tab == "Blog" {
+return 3
+}
+return -1
+}
 
 templ PageWrapper() {
 
 <body class="antialiased bg-black">
   <div class="grid grid-cols-5 gap-3">
     <div id="navigation">
-      @components.Navigation(false, 0)
+      @components.Navigation(false, PickNum(ctx.Value("tab").(string)))
     </div>
-    <div id="page" class="col-span-4">
-      @about.About()
+    <div id="page" class="overflow-auto col-span-4">
+      @PickTab(ctx.Value("tab").(string))
     </div>
   </div>
 </body>

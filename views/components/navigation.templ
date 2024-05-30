@@ -4,7 +4,7 @@ import "fmt"
 
 templ NavButton(name string, desc string, on bool) {
 <div x-data="{ id: $id('accordion') }" if on==true {
-  class="cursor-pointer group bg-purple-800 w-full rounded-md mx-auto border-2 min-content" } if on==false {
+  class="cursor-pointer group bg-orange-950 w-full rounded-md mx-auto border-2 min-content" } if on==false {
   class="cursor-pointer m-auto group rounded-md border-2 min-content" hx-swap="outerHTML" hx-get="/" hx-include="#tab"
   hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content" }` } }>
   <button if on!=true { class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline"
@@ -26,8 +26,10 @@ templ NavButton(name string, desc string, on bool) {
 }
 
 templ Navigation(minimize bool, on int) {
-<div hx-swap-oob="true" id="navigation" class="flex min-content max-w-xl items-left py-2 bg-black">
+<div hx-swap-oob="true" id="navigation" class="flex min-content items-left py-2 bg-black">
   <input id="tab" type="hidden" name="tab" value={ ctx.Value("tab").(string) } />
+  <input id="minimize" type="hidden" name="minimize" value={ ctx.Value("minimize").(string) } />
+  if !minimize {
   <div x-data="{ 
         activeAccordion: '', 
         setActiveAccordion(id) { 
@@ -35,7 +37,7 @@ templ Navigation(minimize bool, on int) {
         } 
     }" class="relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0">
     <div if minimize { class="invisible size-0" }>
-      <img src="public/images/nereus_logo.png" class="my-10 min-w-20 border-2 rounded-full" />
+      <img src="public/images/nereus_logo.png" class="my-10 min-w-20" />
       if on==0 {
       @NavButton("About", "Learn about Nereus", true)
       } else {
@@ -51,24 +53,28 @@ templ Navigation(minimize bool, on int) {
       } else {
       @NavButton("Blog", "Learn more about our projects", false)
       }
-      <div class="border-2 mx-auto">
-        <div if !minimize { class="flex items-center text-white py-2 m-auto border-2" hx-post="/min"
-          hx-disabled-elt="#navigation" } if minimize {
-          class="bg-purple-800 items-center text-white py-2  m-auto rounded border-2" hx-post="/max" }>
-          if minimize {
+      <div class="mx-auto">
+        <div class="flex items-center text-white py-2 m-auto rounded-md border-2" hx-get="/"
+          hx-include="#minimize, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "true" ) } hx-headers={
+          `{"View": "content" }` }>
           <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
           </svg>
-          } else {
-          <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9" transform="rotate(90, 12, 12)"></polyline>
-          </svg>
-          }
         </div>
       </div>
     </div>
   </div>
+  } else {
+  <div class="">
+    <div class="flex items-center text-white py-2 rounded-md border-2" hx-get="/" hx-include="#minimize, #tab" hx-vals={
+      fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "false" ) } hx-headers={ `{"View": "content" }` }>
+      <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
+      </svg>
+    </div>
+  </div>
+  }
 </div>
 }

@@ -1,1 +1,1 @@
-<div class=\"container mx-10 \"><div class=\"flex justify-center\"><h1 class=\"text-purple-500 uppercase text-bold text-2xl font-extrabold tracking-wider text-center m-5\">NEREUS TECHNOLOGY</h1></div></div>
+<div class=\"container mx-10 \"><div class=\"flex justify-center\"><h1 class=\"text-orange-600 uppercase text-bold text-2xl font-extrabold tracking-wider text-center m-5\">NEREUS TECHNOLOGY</h1></div></div>

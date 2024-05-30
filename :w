@@ -36,7 +36,9 @@ func HandleHome(w http.ResponseWriter, r *http.Request) error {
 		}
 		if tab == "About" {
 			Render(w, r, components.Navigation(minimize, 0))
-			return Render(w, r, about.About())
+			if minimize {
+				return Render(w, r, about.About())
+			}
 		}
 		if tab == "Contact" {
 			Render(w, r, components.Navigation(minimize, 1))
@@ -44,7 +46,6 @@ func HandleHome(w http.ResponseWriter, r *http.Request) error {
 		}
 		if tab == "Blog" {
 			Render(w, r, components.Navigation(minimize, 2))
-
 			return Render(w, r, blog.Blog())
 		}
 	}

@@ -8,7 +8,7 @@
  class=\"flex items-center justify-between w-full p-4  text-left select-none group-hover:underline\"><span>
 </span> <svg class=\"w-4 h-4 duration-200 ease-out\" :class=\"{ &#39;rotate-180&#39;: activeAccordion==id }\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"></polyline></svg></button><div x-show=\"activeAccordion==id\" x-invisible x-cloak><div class=\"p-4 pt-0 opacity-70\">
 </div></div></div>
-<div class=\"flex min-content max-w-xl items-left py-2 bg-black\"><input id=\"tab\" type=\"hidden\" name=\"tab\" value=\"
+<div hx-swap-oob=\"true\" id=\"navigation\" class=\"flex min-content max-w-xl items-left py-2 bg-black\"><input id=\"tab\" type=\"hidden\" name=\"tab\" value=\"
 \"><div x-data=\"{ \n        activeAccordion: &#39;&#39;, \n        setActiveAccordion(id) { \n            this.activeAccordion = (this.activeAccordion == id) ? &#39;&#39; : id \n        } \n    }\" class=\"relative w-full justify-center items-center text-sm font-normal bg-black text-white border-0\"><div
  class=\"invisible size-0\"
 ><img src=\"public/images/nereus_logo.png\" class=\"my-10 min-w-20 border-2 rounded-full\"> 

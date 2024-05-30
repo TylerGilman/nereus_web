@@ -7,8 +7,9 @@ templ NavButton(name string, desc string, on bool) {
   class="cursor-pointer group bg-purple-800 w-full rounded-md mx-auto border-2 min-content" } if on==false {
   class="cursor-pointer m-auto group rounded-md border-2 min-content" hx-swap="outerHTML" hx-get="/" hx-include="#tab"
   hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content" }` } }>
-  <button if on!=true { @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" }
-    class="flex items-center justify-between w-full p-4  text-left select-none group-hover:underline">
+  <button if on!=true { class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline"
+    @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" } else {
+    class="flex items-center justify-between w-full p-4 text-left select-none" }>
     <span>{ name }</span>
     <svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

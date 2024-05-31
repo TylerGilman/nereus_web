@@ -23,22 +23,22 @@ func Blog() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"page\" hx-swap-oob=\"true\" hx-target=\"page\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if ctx.Value("minimize") == "true" {
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" class=\"overflow-auto col-span-6\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" class=\"overflow-auto col-span-4\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("><div id=\"page-content\" hx-swap-oob=\"true\" role=\"tabpanel\" class=\"tab-content items-center justify-center text-white m-10 col-span-4\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac ex a augue ornare eleifend at vel neque. Aenean aliquam urna et nisi convallis, id fringilla felis volutpat. Nullam maximus consequat tellus, venenatis malesuada magna tristique et. Nunc sed purus eu arcu vulputate dignissim. Suspendisse rhoncus pretium porta. Donec scelerisque, dui id sodales ultricies, leo ipsum interdum felis, ac tempor tortor ante non mauris. Duis ut auctor dolor. Fusce porta ante sed eleifend rutrum. Fusce cursus erat ac magna cursus semper. Nam id odio orci.</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

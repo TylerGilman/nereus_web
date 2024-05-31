@@ -1,3 +1,0 @@
-<body class=\"antialiased bg-black\"><div class=\"grid grid-cols-5 gap-3\"><div id=\"navigation\">
-</div><div id=\"page\" class=\"overflow-auto col-span-4\">
-</div></div></body>

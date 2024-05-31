@@ -39,7 +39,7 @@ templ PageWrapper() {
     <div id="navigation">
       @components.Navigation(false, PickNum(ctx.Value("tab").(string)))
     </div>
-    <div id="page" class="overflow-auto col-span-4">
+    <div id="page" class="overflow-auto col-span-4 max-h-[85%]">
       @PickTab(ctx.Value("tab").(string))
     </div>
   </div>

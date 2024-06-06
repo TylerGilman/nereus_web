@@ -1,11 +1,11 @@
 package contact
 
 templ Contact() {
-<div id="page" hx-swap-oob="true" hx-target="page" if ctx.Value("minimize")=="true" { class="overflow-auto col-span-6" }
-  else { class="overflow-auto col-span-4" }>
+<div id="page" hx-swap-oob="true" hx-target="page" if ctx.Value("minimize")=="true" {
+  class="overflow-auto col-span-6 m-10" } else { class="overflow-auto col-span-4" }>
   <div id="page-content" hx-swap-oob="true" hx-target="page-content" role="tabpanel"
     class="tab-content items-center justify-center m-11 col-span-4 bg-zinc-900 rounded-md">
-    <h1 class="m-2 context-align justify-center text-orange-600 uppercase text-bold text-4xl">Contact Us </h1>
+    <h1 class="m-2 context-align justify-center text-orange-600 uppercase text-bold text-4xl mx-auto">Contact Us </h1>
     <div class="w-full m-10 text-orange-100">
       <form class="m-10 text-2xl text-bold">
         <h2 class="m-2">

@@ -3,10 +3,11 @@ package components
 import "fmt"
 
 templ NavButton(name string, desc string, on bool) {
-<div x-data="{ id: $id('accordion') }" if on==true { class="cursor-pointer group bg-orange-950 w-full rounded-md border-orange-600 mx-auto border-2
-  min-content" } if on==false { class="cursor-pointer m-auto group rounded-md border-2 border-orange-600 min-content"
-  hx-swap="outerHTML" hx-get="/" hx-include="#tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={
-  `{"View": "content" }` } }>
+<div x-data="{ id: $id('accordion') }" if on==true { class=" cursor-pointer group bg-orange-950 w-full rounded-md border-orange-600 mx-auto border-2
+  min-content" } if on==false {
+  class="cursor-pointer bg-black m-auto group rounded-md border-2 border-orange-600 min-content" hx-swap="outerHTML"
+  hx-get="/" hx-include="#tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content"
+  }` } }>
   <button if on!=true { class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline"
     @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" } else {
     class="flex items-center justify-between w-full p-4 text-left select-none" }>
@@ -26,55 +27,57 @@ templ NavButton(name string, desc string, on bool) {
 }
 
 templ Navigation(minimize bool, on int) {
-<div hx-swap-oob="true" id="navigation" class="flex min-content items-left py-2 bg-black">
-  <input id="tab" type="hidden" name="tab" value={ ctx.Value("tab").(string) } />
-  <input id="minimize" type="hidden" name="minimize" value={ ctx.Value("minimize").(string) } />
-  if !minimize {
-  <div x-data="{ 
+<nav hx-swap-oob="true" id="navigation" class=" text-orange-600 h-full">
+  <div class="flex min-content items-left py-2">
+    <input id="tab" type="hidden" name="tab" value={ ctx.Value("tab").(string) } />
+    <input id="minimize" type="hidden" name="minimize" value={ ctx.Value("minimize").(string) } />
+    if !minimize {
+    <div x-data="{ 
         activeAccordion: '', 
         setActiveAccordion(id) { 
             this.activeAccordion = (this.activeAccordion == id) ? '' : id 
         } 
-    }" class="relative w-full justify-center items-center text-sm font-normal bg-black text-orange-600 border-0">
-    <div if minimize { class="invisible size-0" }>
-      <img src="public/images/nereus_logo.png" class="my-10 min-w-20" />
-      if on==0 {
-      @NavButton("About", "Learn about Nereus", true)
-      } else {
-      @NavButton("About", "Learn about Nereus", false)
-      }
-      if on==1 {
-      @NavButton("Contact", "Contact Us", true)
-      } else {
-      @NavButton("Contact", "Contact Us", false)
-      }
-      if on==2 {
-      @NavButton("Blog", "Learn more about our projects", true)
-      } else {
-      @NavButton("Blog", "Learn more about our projects", false)
-      }
-      <div class="mx-auto">
-        <div class="flex items-cente py-2 m-auto rounded-md border-2 border-orange-600" hx-get="/"
-          hx-include="#minimize, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "true" ) } hx-headers={
-          `{"View": "content" }` }>
-          <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
-          </svg>
+    }" class="relative w-full justify-center items-center text-sm font-normal text-orange-600 border-0">
+      <div if minimize { class="invisible size-0" }>
+        <img src="public/images/nereus_logo.png" class="my-10 min-w-20" />
+        if on==0 {
+        @NavButton("About", "Learn about Nereus", true)
+        } else {
+        @NavButton("About", "Learn about Nereus", false)
+        }
+        if on==1 {
+        @NavButton("Contact", "Contact Us", true)
+        } else {
+        @NavButton("Contact", "Contact Us", false)
+        }
+        if on==2 {
+        @NavButton("Blog", "Learn more about our projects", true)
+        } else {
+        @NavButton("Blog", "Learn more about our projects", false)
+        }
+        <div class="mx-auto">
+          <div class="flex items-cente py-2 m-auto rounded-md border-2 border-orange-600" hx-get="/"
+            hx-include="#minimize, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "true" ) } hx-headers={
+            `{"View": "content" }` }>
+            <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  } else {
-  <div class="">
-    <div class="flex items-center text-white py-2 rounded-md border-2" hx-get="/" hx-include="#minimize, #tab" hx-vals={
-      fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "false" ) } hx-headers={ `{"View": "content" }` }>
-      <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
-      </svg>
+    } else {
+    <div class="">
+      <div class="flex items-center text-white py-2 rounded-md border-2" hx-get="/" hx-include="#minimize, #tab"
+        hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "false" ) } hx-headers={ `{"View": "content" }` }>
+        <svg class="w-4 h-4 duration-200 ease-out mx-auto" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9" transform="rotate(220, 12, 12)"></polyline>
+        </svg>
+      </div>
     </div>
+    }
   </div>
-  }
-</div>
+</nav>
 }

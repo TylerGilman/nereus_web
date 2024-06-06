@@ -1,0 +1,3 @@
+<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/About\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>
+<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/Contact\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>
+<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/Contact\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>

@@ -67,19 +67,19 @@ func Page(data NavData) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		if data.Page == "about" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/About\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if data.Page == "contact" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/Contact\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if data.Page == "contact" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-trigger=\"load\" hx-swap=\"outerHTML\" hx-get=\"/Contact\" hx-vals=\"{&#34;page&#34;: &#34;fuck&#34;}\"></div>")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -250,7 +250,7 @@ func Navigation(minimize bool, on int) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf(`{"%s": "%s" }`, "minimize", "false"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/navigation.templ`, Line: 73, Col: 69}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/navigation.templ`, Line: 76, Col: 69}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -263,7 +263,7 @@ func Navigation(minimize bool, on int) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(`{"View": "content" }`)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/navigation.templ`, Line: 73, Col: 107}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/navigation.templ`, Line: 76, Col: 107}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {

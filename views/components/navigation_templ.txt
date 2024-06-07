@@ -17,8 +17,8 @@
 ><img src=\"public/images/nereus_logo.png\" class=\"my-10 min-w-20\"> 
 <div class=\"mx-auto\"><div class=\"flex items-cente py-2 m-auto rounded-md border-2 border-orange-600\" hx-get=\"/\" hx-include=\"#minimize, #tab\" hx-vals=\"
 \" hx-headers=\"
-\"><svg class=\"w-4 h-4 duration-200 ease-out mx-auto\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\" transform=\"rotate(220, 12, 12)\"></polyline></svg></div></div></div></div>
+\"><svg class=\"w-12 h-12 mx-auto\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-lightbulb\"><path d=\"M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z\"></path></svg></div></div></div></div>
 <div class=\"\"><div class=\"flex items-center text-white py-2 rounded-md border-2\" hx-get=\"/\" hx-include=\"#minimize, #tab\" hx-vals=\"
 \" hx-headers=\"
-\"><svg class=\"w-4 h-4 duration-200 ease-out mx-auto\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\" transform=\"rotate(220, 12, 12)\"></polyline></svg></div></div>
+\"><svg class=\"w-12 h-12 mx-auto\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-lightbulb\"><path d=\"M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z\"></path> <line x1=\"3\" y1=\"21\" x2=\"21\" y2=\"3\"></line></svg></div></div>
 </div></nav>

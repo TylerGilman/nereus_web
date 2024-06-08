@@ -1,7 +1,7 @@
 package components
 
 templ Header() {
-<div class="mx-auto bg-black w-full">
+<div if ctx.Value("darkmode")=="true" { class="mx-auto bg-black w-full" } else { class="mx-auto bg-white w-full" }>
   <div class="flex justify-center">
     <header class="text-orange-600 uppercase text-bold text-2xl font-extrabold py-5 text-center m-5">
       NEREUS TECHNOLOGY

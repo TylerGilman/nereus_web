@@ -20,9 +20,6 @@ func main() {
 
 	router.Handle("/*", public())
 	router.Get("/", handlers.Make(handlers.HandleHome))
-	router.Get("/page", handlers.Make(handlers.HandlePage))
-	// router.Get("/min", handlers.Make(handlers.HandleMin))
-	// router.Get("/max", handlers.Make(handlers.HandleMax))
 	listenAddr := os.Getenv("LISTEN_ADDR")
 	slog.Info("HTTP server started", "listenAddr", listenAddr)
 	http.ListenAndServe(listenAddr, router)

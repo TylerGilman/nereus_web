@@ -14,37 +14,32 @@ import (
 
 func HandleHome(w http.ResponseWriter, r *http.Request) error {
 	tab := r.URL.Query().Get("tab")
-	isMinimized := r.URL.Query().Get("minimize")
+	isDarkmode := r.URL.Query().Get("darkmode")
 	// If header = content render content
 	// else render whole screen
 	if tab == "" {
 		tab = "About"
 	}
-	if isMinimized == "" {
-		isMinimized = "false"
+	if isDarkmode == "" {
+		isDarkmode = "true"
 	}
 	r = r.WithContext(context.WithValue(r.Context(), "tab", tab))
-	r = r.WithContext(context.WithValue(r.Context(), "minimize", isMinimized))
+	r = r.WithContext(context.WithValue(r.Context(), "darkmode", isDarkmode))
 
 	fmt.Println("ctx.tab: ", tab)
-	fmt.Println("ctx.isMinimized ", isMinimized)
+	fmt.Println("ctx.darkmode ", isDarkmode)
 	header := r.Header.Get("View")
 	if header == "content" {
-		minimize := true
-		if isMinimized == "false" {
-			minimize = false
-		}
 		if tab == "About" {
-			Render(w, r, components.Navigation(minimize, 0))
+			Render(w, r, components.Navigation())
 			return Render(w, r, about.About())
 		}
 		if tab == "Contact" {
-			Render(w, r, components.Navigation(minimize, 1))
+			Render(w, r, components.Navigation())
 			return Render(w, r, contact.Contact())
 		}
 		if tab == "Blog" {
-			Render(w, r, components.Navigation(minimize, 2))
-
+			Render(w, r, components.Navigation())
 			return Render(w, r, blog.Blog())
 		}
 	}

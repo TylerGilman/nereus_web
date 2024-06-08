@@ -38,7 +38,7 @@ templ PageWrapper() {
   style="background-image: url('public/images/oceanbackground.jpg');">
   <div class="grid grid-cols-12 gap-0 w-full h-full ">
     <div class="col-span-1 h-full">
-      @components.Navigation(false, PickNum(ctx.Value("tab").(string)))
+      @components.Navigation()
     </div>
     <div class="col-span-10 flex flex-1 overflow-hidden h-full bg-opacity-75 bg-black">
       @PickTab(ctx.Value("tab").(string))

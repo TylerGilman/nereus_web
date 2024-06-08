@@ -4,7 +4,7 @@ templ Footer() {
 <div class="bg-black w-full fixed bottom-0">
   <div x-data="{
         text: '',
-        textArray : ['In Greek Mythology Nereus was a Sea God', 'Called by the poet Homer Old Man of the Sea', 'Known for wisdom, gift of prophecy, and ability to shapeshift' ], textIndex: 0, charIndex: 0, typeSpeed: 110,
+        textArray : ['In Greek Mythology Nereus was a Sea God', 'Called by poet Homer Old Man of the Sea', 'Known for wisdom, gift of prophecy, and ability to shapeshift' ], textIndex: 0, charIndex: 0, typeSpeed: 110,
   cursorSpeed: 550, pauseEnd: 1500, pauseStart: 20, direction: 'forward' , }" x-init="$nextTick(() => {
         let typingInterval = setInterval(startTyping, $data.typeSpeed);
     

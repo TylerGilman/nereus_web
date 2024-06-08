@@ -3,12 +3,12 @@ package components
 import "fmt"
 
 templ NavButton(name string, desc string, on bool) {
-<div x-data="{ id: $id('accordion') }" if on==true { class=" cursor-pointer group bg-orange-950 w-full rounded-md border-orange-600 mx-auto border-2
-  min-content" } if on==false {
-  class="cursor-pointer bg-black m-auto group rounded-md border-2 border-orange-600 min-content" hx-swap="outerHTML"
-  hx-get="/" hx-include="#tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content"
-  }` } }>
-  <button if on!=true { class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline"
+<div x-data="{ id: $id('accordion') }" if on==true { class="cursor-pointer group bg-orange-950 w-full rounded-md border-orange-400 mx-auto border-2
+  min-content" } if ctx.Value("tab")!=name {
+  class="cursor-pointer m-auto group rounded-md border-2 border-orange-600 min-content" hx-swap="outerHTML" hx-get="/"
+  hx-include="#tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "tab" , name) } hx-headers={ `{"View": "content" }` } }>
+  <button if ctx.Value("tab")!=name {
+    class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline"
     @mouseover="setActiveAccordion(id)" @mouseout="setActiveAccordion(id)" } else {
     class="flex items-center justify-between w-full p-4 text-left select-none" }>
     <span>{ name }</span>
@@ -19,72 +19,70 @@ templ NavButton(name string, desc string, on bool) {
     </svg>
   </button>
   <div x-show="activeAccordion==id" x-invisible x-cloak>
-    <div class="p-4 pt-0 opacity-70">
+    <div class="p-4 pt-0 text-orange-400 text-bold">
       { desc }
     </div>
   </div>
 </div>
 }
 
-templ Navigation(minimize bool, on int) {
+templ Navigation() {
 <nav hx-swap-oob="true" id="navigation" class=" text-orange-600 h-full">
   <div class="flex min-content items-left py-2">
     <input id="tab" type="hidden" name="tab" value={ ctx.Value("tab").(string) } />
-    <input id="minimize" type="hidden" name="minimize" value={ ctx.Value("minimize").(string) } />
-    if !minimize {
+    <input id="darkmode" type="hidden" name="darkmode" value={ ctx.Value("darkmode").(string) } />
     <div x-data="{ 
         activeAccordion: '', 
         setActiveAccordion(id) { 
             this.activeAccordion = (this.activeAccordion == id) ? '' : id 
         } 
     }" class="relative w-full justify-center items-center text-sm font-normal text-orange-600 border-0">
-      <div if minimize { class="invisible size-0" }>
+      <div>
         <img src="public/images/nereus_logo.png" class="my-10 min-w-20" />
-        if on==0 {
+        // There has gotta be a better way to do this
+        if ctx.Value("Tab") == "About" {
         @NavButton("About", "Learn about Nereus", true)
         } else {
         @NavButton("About", "Learn about Nereus", false)
         }
-        if on==1 {
+        if ctx.Value("Tab") == "Contact" {
         @NavButton("Contact", "Contact Us", true)
         } else {
         @NavButton("Contact", "Contact Us", false)
         }
-        if on==2 {
+        if ctx.Value("Tab") == "Blog" {
         @NavButton("Blog", "Learn more about our projects", true)
         } else {
         @NavButton("Blog", "Learn more about our projects", false)
         }
-        <div class="mx-auto">
-          <div class="flex items-cente py-2 m-auto rounded-md border-2 border-orange-600" hx-get="/"
-            hx-include="#minimize, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "true" ) } hx-headers={
-            `{"View": "content" }` }>
-            <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-lightbulb">
-              <path
-                d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z">
-              </path>
-            </svg>
-          </div>
+        if ctx.Value("darkmode") == "true" {
+        <div class="flex items-cente bg-black py-2 rounded-md border-2 border-orange-600" hx-get="/"
+          hx-include="#darkmode, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "darkmode" , "false" ) } hx-headers={
+          `{"View": "pagemode" }` }>
+          <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-lightbulb">
+            <path
+              d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z">
+            </path>
+          </svg>
         </div>
+        } else {
+        <div class="flex items-cente bg-white py-2 rounded-md border-2 border-orange-600" hx-get="/"
+          hx-include="#darkmode, #tab" hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "darkmode" , "true" ) } hx-headers={
+          `{"View": "pagemode" }` }>
+          <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-lightbulb">
+            <path
+              d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z">
+            </path>
+            <line x1="3" y1="21" x2="21" y2="3"></line>
+          </svg>
+        </div>
+        }
       </div>
     </div>
-    } else {
-    <div class="">
-      <div class="flex items-center text-white py-2 rounded-md border-2" hx-get="/" hx-include="#minimize, #tab"
-        hx-vals={ fmt.Sprintf(`{"%s": "%s" }`, "minimize" , "false" ) } hx-headers={ `{"View": "content" }` }>
-        <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="feather feather-lightbulb">
-          <path
-            d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.485-1.5 4.647-3.5 5.801V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2.199C6.5 13.647 5 11.485 5 9a7 7 0 0 1 7-7z">
-          </path>
-          <line x1="3" y1="21" x2="21" y2="3"></line>
-        </svg>
-      </div>
-    </div>
-    }
   </div>
 </nav>
 }
